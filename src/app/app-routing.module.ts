@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'profile',
+    path: 'profile', 
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
