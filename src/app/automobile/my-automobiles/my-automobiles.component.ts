@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class MyAutomobilesComponent {
 
+  myAutomobiles: {title:string, vin:string, type:string}[] = [ 
+    {title:'auto1', vin:'123', type:'type1'},
+    {title:'auto1', vin:'123', type:'type1'},
+    {title:'auto1', vin:'123', type:'type1'},
+    {title:'auto1', vin:'123', type:'type1'}
+  ];
+
 }
