@@ -11,6 +11,7 @@ import { AutoMobileService } from '../services/auto-mobile.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   autoCards: IAutoMobile[] = [];
+  priceFilterParams: { min: number; max: number } = { min: 0, max: 0 };
   private subscription!: Subscription;
   constructor(
     private router: Router,
@@ -20,7 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.autoMobileService.getAutoMobile().subscribe(
       (result: { data: IAutoMobile[] }) => {
-        console.log(result);
         if (result.data.length > 0) {
           this.autoCards = result.data;
         }
@@ -29,6 +29,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     );
+  }
+
+  priceRangeFilter(data: { min: number; max: number }) {
+    //console.log(data);
+    this.priceFilterParams = data;
   }
 
   trackByFn(index: number, item: IAutoMobile) {
