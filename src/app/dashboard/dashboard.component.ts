@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.autoMobileService.getAutoMobile().subscribe(
       (result: { data: IAutoMobile[] }) => {
-        console.log(result);
         if (result.data.length > 0) {
           this.autoCards = result.data;
         }
