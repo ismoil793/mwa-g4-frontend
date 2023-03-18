@@ -35,7 +35,6 @@ import { PriceFilterPipe } from './pipe/price-filter.pipe';
     SharedModule,
     ReactiveFormsModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
