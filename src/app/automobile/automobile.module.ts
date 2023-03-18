@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
+import { AutoDetailComponent } from './auto-detail/auto-detail.component';
 
-const routes: Routes = [{ path: '', component: ListComponent }];
+const routes: Routes = [
+  { path: '', component: ListComponent },
+  {
+    path: 'auto-detail',
+    component: AutoDetailComponent,
+  },
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [AutoDetailComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class AutomobileModule {}
