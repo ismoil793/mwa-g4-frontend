@@ -11,9 +11,6 @@ export interface IAutoMobile {
   vin: number;
   type: string;
   price: number;
-  pictures: {
-    primary: string;
-    interior: string;
-  };
+  pictures: { fileName: string }[];
   location: [string, string];
 }
