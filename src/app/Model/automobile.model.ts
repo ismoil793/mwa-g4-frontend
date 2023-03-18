@@ -12,8 +12,7 @@ export interface IAutoMobile {
   type: string;
   price: number;
   pictures: {
-    primary: string;
-    interior: string;
-  };
+    fileName: string;
+  }[];
   location: [string, string];
 }

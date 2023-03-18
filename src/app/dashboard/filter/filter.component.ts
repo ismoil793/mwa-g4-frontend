@@ -57,7 +57,6 @@ export class FilterComponent implements OnInit {
     }
   }
   sortSubmit() {
-    console.log(this.sortForm.value);
     this.priceSortEvent.emit(this.sortForm.value);
   }
 }

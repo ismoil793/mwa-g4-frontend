@@ -1,3 +1,3 @@
 export const environment = {
-  rootUrl: 'http://localhost:3000/api/v1/',
+  rootUrl: 'http://localhost:3001/api/v1/',
 };
