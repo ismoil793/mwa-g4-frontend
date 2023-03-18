@@ -35,6 +35,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     //console.log(data);
     this.priceFilterParams = data;
   }
+  priceSortEvent(data: { sort: string }) {
+    if (data.sort == 'priceAsc') {
+      this.autoCards = [...this.autoCards.sort((a, b) => a.price - b.price)];
+    } else {
+      this.autoCards = [...this.autoCards.sort((a, b) => b.price - a.price)];
+    }
+  }
 
   trackByFn(index: number, item: IAutoMobile) {
     return item._id;

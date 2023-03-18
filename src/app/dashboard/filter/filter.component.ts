@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,33 +17,47 @@ export class FilterComponent implements OnInit {
     min: number;
     max: number;
   }>();
-  form!: FormGroup;
+  @Output() priceSortEvent = new EventEmitter<{
+    sort: string;
+  }>();
+  filterForm!: FormGroup;
+  sortForm!: FormGroup;
   invalid: boolean = false;
 
   private subscription!: Subscription;
 
   constructor(private formBuilder: FormBuilder) {}
 
-  // convenience getter for easy access to form fields
+  // convenience getter for easy access to filterForm fields
   get f() {
-    return this.form.controls;
+    return this.filterForm.controls;
   }
   // min: ['', Validators.required, Validators.pattern('^[0-9]*$')],
   // max: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
   ngOnInit() {
-    this.form = this.formBuilder.group({
+    this.filterForm = this.formBuilder.group({
       min: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       max: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
+    this.sortForm = this.formBuilder.group({
+      sort: new FormControl('', Validators.required),
+    });
   }
 
-  onSubmit() {
-    if (this.form.invalid || this.form.value.min > this.form.value.max) {
+  onPriceRangeSubmit() {
+    if (
+      this.filterForm.invalid ||
+      this.filterForm.value.min > this.filterForm.value.max
+    ) {
       this.invalid = true;
       this.priceRangeFilterEvent.emit({ min: 0, max: 0 });
     } else {
       this.invalid = false;
-      this.priceRangeFilterEvent.emit(this.form.value);
+      this.priceRangeFilterEvent.emit(this.filterForm.value);
     }
+  }
+  sortSubmit() {
+    console.log(this.sortForm.value);
+    this.priceSortEvent.emit(this.sortForm.value);
   }
 }

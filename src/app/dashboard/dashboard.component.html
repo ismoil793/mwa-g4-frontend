@@ -1,7 +1,9 @@
 <div class="container d-flex justify-content-center mt-50 mb-50">
   <div class="row" *ngIf="autoCards.length>0">
     <aside class="col-md-3 mt-2">
-      <app-filter (priceRangeFilterEvent)="priceRangeFilter($event)"/>
+      <app-filter 
+      (priceRangeFilterEvent)="priceRangeFilter($event)"
+      (priceSortEvent)="priceSortEvent($event)"/>
     </aside>
     <div class="col-md-9">
       <div class="row" >

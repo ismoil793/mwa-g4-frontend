@@ -9,37 +9,44 @@
         class=""
       >
         <i class="icon-control fa fa-chevron-down"></i>
-        <h6 class="title">Brands</h6>
+        <h6 class="title">Sort</h6>
       </a>
     </header>
-    <div class="filter-content collapse show" id="collapse_2" style="">
+    <form
+      class="filter-content collapse show"
+      id="collapse_2"
+      [formGroup]="sortForm"
+      (ngSubmit)="sortSubmit()"
+    >
       <div class="p-3">
         <div class="form-check">
           <input
             class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
+            type="radio"
+            name="sort"
+            value="priceAsc"
+            formControlName="sort"
           />
           <label class="form-check-label" for="flexCheckDefault">
-            Default checkbox
+            Price (low -> high)
           </label>
         </div>
         <div class="form-check">
           <input
             class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckChecked"
-            checked
+            type="radio"
+            name="sort"
+            value="priceDesc"
+            formControlName="sort"
           />
           <label class="form-check-label" for="flexCheckChecked">
-            Checked checkbox
+            Price (high -> low)
           </label>
         </div>
+        <button type="submit" class="btn bg-cart mt-4">Apply</button>
       </div>
       <!-- card-body.// -->
-    </div>
+    </form>
   </article>
   <!-- filter-group .// -->
   <article class="filter-group">
@@ -57,7 +64,11 @@
     </header>
     <div class="filter-content collapse show" id="collapse_3">
       <div class="p-3">
-        <form class="form-row" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form
+          class="form-row"
+          [formGroup]="filterForm"
+          (ngSubmit)="onPriceRangeSubmit()"
+        >
           <div class="form-group col-md-6">
             <label>Min</label>
             <input
