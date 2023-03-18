@@ -1,0 +1,21 @@
+<h3>My automobiles</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Vin</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meal of myAutomobiles; index as i">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <button>Delete</button>
+        <button>View</button>
+      </tr>
+    </tbody>
+  </table>
