@@ -11,6 +11,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
+import { FilterComponent } from './dashboard/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
