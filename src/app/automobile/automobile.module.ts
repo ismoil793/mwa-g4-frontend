@@ -7,7 +7,7 @@ import { AutoDetailComponent } from './auto-detail/auto-detail.component';
 const routes: Routes = [
   { path: '', component: ListComponent },
   {
-    path: 'auto-detail',
+    path: 'auto-detail/:autoMobilId',
     component: AutoDetailComponent,
   },
 ];

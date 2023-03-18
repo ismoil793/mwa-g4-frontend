@@ -57,7 +57,9 @@ body {
 }
 
 .bg-cart:hover {
+  background-color: orange;
   color: #fff;
+  border: gray 1px solid;
 }
 
 .bg-buy {
@@ -66,6 +68,7 @@ body {
   padding-right: 29px;
 }
 .bg-buy:hover {
+  background-color: orange;
   color: #fff;
 }
 
