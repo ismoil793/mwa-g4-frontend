@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { AutoCardComponent } from './auto-card/auto-card.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [AutoCardComponent],
+  imports: [CommonModule],
+  exports: [AutoCardComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

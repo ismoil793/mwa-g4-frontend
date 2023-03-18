@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-img-actions">
+      <img
+        [src]="'/assets/images/' + pictures?.primary"
+        class="card-img img-fluid"
+        width="96"
+        height="350"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div class="card-body bg-light text-center">
+    <div class="mb-2">
+      <h6 class="font-weight-semibold mb-2">
+        <a (click)="onClick()" class="text-default mb-2" data-abc="true"
+          >{{ title }}
+        </a>
+      </h6>
+
+      <p class="text-muted" data-abc="true">{{ type }}</p>
+    </div>
+
+    <h3 class="mb-0 font-weight-semibold">{{ price | currency }}</h3>
+
+    <button type="button" (click)="onClick()" class="btn bg-cart mt-4">
+      <i class="fa fa-cart-plus mr-2"></i> Details
+    </button>
+  </div>
+</div>

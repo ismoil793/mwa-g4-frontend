@@ -8,7 +8,7 @@ import { MyAutomobilesComponent } from './my-automobiles/my-automobiles.componen
 const routes: Routes = [
   { path: '', component: ListComponent },
   {
-    path: 'auto-detail',
+    path: 'auto-detail/:autoMobilId',
     component: AutoDetailComponent,
   },
   { path: 'myAutomobiles', component: MyAutomobilesComponent },
