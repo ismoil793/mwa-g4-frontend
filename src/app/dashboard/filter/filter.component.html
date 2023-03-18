@@ -55,17 +55,35 @@
         <h6 class="title">Price range</h6>
       </a>
     </header>
-    <div class="filter-content collapse show" id="collapse_3" style="">
+    <div class="filter-content collapse show" id="collapse_3">
       <div class="p-3">
-        <div class="form-row">
+        <form class="form-row" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group col-md-6">
             <label>Min</label>
-            <input class="form-control" placeholder="$0" type="number" />
+            <input
+              class="form-control"
+              formControlName="min"
+              placeholder="$0"
+              type="number"
+              value="10"
+            />
           </div>
           <div class="form-group text-right col-md-6">
             <label>Max</label>
-            <input class="form-control" placeholder="$1,0000" type="number" />
+            <input
+              class="form-control"
+              formControlName="max"
+              placeholder="$1,0000"
+              type="number"
+              value="3000"
+            />
           </div>
+
+          <button type="submit" class="btn bg-cart mt-4">Apply</button>
+        </form>
+        <br />
+        <div *ngIf="invalid" class="text-danger">
+          Please select a valid input.
         </div>
       </div>
       <!-- card-body.// -->

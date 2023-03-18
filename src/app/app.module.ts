@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { FilterComponent } from './dashboard/filter/filter.component';
 
+import { PriceFilterPipe } from './pipe/price-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +25,7 @@ import { FilterComponent } from './dashboard/filter/filter.component';
     FooterComponent,
     DashboardComponent,
     FilterComponent,
+    PriceFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { FilterComponent } from './dashboard/filter/filter.component';
     HttpClientModule,
     NgbModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
