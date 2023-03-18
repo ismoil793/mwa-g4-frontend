@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {ActivatedRoute, ParamMap} from "@angular/router";
+import {AutoCrudService} from "../auto-crud.service";
 
 @Component({
   selector: 'app-auto-detail',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./auto-detail.component.css']
 })
 export class AutoDetailComponent {
+  constructor(private route: ActivatedRoute) { }
+  private autoCrudService = inject(AutoCrudService)
+  autoDetails:any
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id') || ''
+      this.autoCrudService.getAutoById(id).subscribe(response => {
+        this.autoDetails = response.data;
+      })
+    });
+  }
 }

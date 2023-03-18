@@ -13,7 +13,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { FilterComponent } from './dashboard/filter/filter.component';
-
 import { PriceFilterPipe } from './pipe/price-filter.pipe';
 
 @NgModule({
