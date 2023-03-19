@@ -14,3 +14,11 @@ export interface IOfferRes {
   type: string;
   offers: IOffer[];
 }
+
+export interface IUpdateRes {
+  acknowledged: boolean;
+  modifiedCount: number;
+  upsertedId: string;
+  upsertedCount: number;
+  matchedCount: number;
+}

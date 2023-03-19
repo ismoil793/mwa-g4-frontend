@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IOffer, IOfferRes } from 'src/app/Model/offer.model';
+import { IOffer, IOfferRes, IUpdateRes } from 'src/app/Model/offer.model';
 import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
@@ -25,6 +25,32 @@ export class OffersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  onClickReject(offerId: string) {
+    if (confirm('Are you sure?')) {
+      this.subscription = this.offerService
+        .offerRejected(this.autoId, offerId, { status: 'rejected' })
+        .subscribe(
+          (result: { success: boolean; data: IUpdateRes }) => {
+            this.loadData();
+          },
+          (error: Error) => {
+            console.log(error);
+          }
+        );
+    }
+  }
+  trackByFn(index: number, item: IOffer) {
+    return item._id;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  private loadData() {
     this.subscription = this.offerService
       .getAllOfferByAutoId(this.autoId)
       .subscribe(
@@ -37,12 +63,5 @@ export class OffersComponent implements OnInit, OnDestroy {
           console.log(error);
         }
       );
-  }
-  trackByFn(index: number, item: IOffer) {
-    return item._id;
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
