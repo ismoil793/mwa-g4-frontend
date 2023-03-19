@@ -31,12 +31,16 @@
             <td>{{ item.comment }}</td>
             <td>{{ item.status }}</td>
             <td>
-              <ng-container *ngIf="item.status == 'none'">
+              <ng-container *ngIf="item.status == '' || item.status == 'none'">
                 <button type="button" class="btn btn-primary btn-sm">
                   Approve
                 </button>
                 &nbsp;
-                <button type="button" class="btn btn-secondary btn-sm">
+                <button
+                  (click)="onClickReject(item._id)"
+                  type="button"
+                  class="btn btn-secondary btn-sm"
+                >
                   Reject
                 </button>
               </ng-container>
