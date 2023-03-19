@@ -54,14 +54,14 @@ export class AuthService {
     return this.loggedInState$.value;
   }
 
-  getJwtToken() {
+  getUserInfo() {
     const appState = this.getAppState() || '';
     console.log('appState: ', appState);
     if (appState.length > 0) {
       const user = JSON.parse(appState);
       console.log('user: ', user);
       if (user) {
-        return user.jwt;
+        return user;
       } else {
         return null;
       }
