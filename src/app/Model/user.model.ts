@@ -12,6 +12,7 @@ export interface ILoginRes {
     _id: string;
       fullname: string;
       email: string;
-      jwt: string;
+    jwt: string;
+      msg?: string
     };
 }

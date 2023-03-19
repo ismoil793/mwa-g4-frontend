@@ -19,14 +19,24 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" [routerLink]="['login']" (click)="logout()">
+              Logout
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" [routerLink]="['login']">Login</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" [routerLink]="['signup']">Signup</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['', '/automobile/myAutomobiles']">My Automobiles</a>
+            <a
+              class="nav-link"
+              [routerLink]="['', '/automobile/myAutomobiles']"
+            >
+              My Automobiles
+            </a>
           </li>
           <li class="nav-item">
             <a
