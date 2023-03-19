@@ -38,7 +38,7 @@ export class LoginComponent {
 
           console.log('res.success: ', res.success);
           if (res.success == true) {
-            this.userService.saveAppState(res.data);
+            this.userService.saveLoggedinState(res.data);
             //redirect to home
             this.router.navigate(['']);
           }
