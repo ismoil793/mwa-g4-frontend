@@ -11,6 +11,14 @@ export class AutoMobileService {
   constructor(private http: HttpClient) {}
 
   public getAutoMobile() {
-    return this.http.get<{ data: IAutoMobile[] }>(this.rootUrL + '/automobiles');
+    return this.http.get<{ data: IAutoMobile[] }>(
+      this.rootUrL + '/automobiles'
+    );
+  }
+
+  public getMyAutoMobiles() {
+    return this.http.get<{ data: IAutoMobile[] }>(
+      this.rootUrL + '/automobiles/myAutomobiles'
+    );
   }
 }
