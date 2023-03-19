@@ -4,9 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { AutoDetailComponent } from './auto-detail/auto-detail.component';
 import { AutoAddComponent } from './auto-add/auto-add.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { AutoEditComponent } from './auto-edit/auto-edit.component';
 import { MyAutomobilesComponent } from './my-automobiles/my-automobiles.component';
+import { OffersComponent } from './offers/offers.component';
 
 const routes: Routes = [
   { path: '', component: ListComponent },
@@ -21,12 +22,22 @@ const routes: Routes = [
   },
   {
     path: 'auto-add',
-    component: AutoAddComponent
-  }
+    component: AutoAddComponent,
+  },
+  {
+    path: 'offers',
+    component: OffersComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [AutoDetailComponent, AutoAddComponent, AutoEditComponent, MyAutomobilesComponent],
+  declarations: [
+    AutoDetailComponent,
+    AutoAddComponent,
+    AutoEditComponent,
+    MyAutomobilesComponent,
+    OffersComponent,
+  ],
   imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
 })
 export class AutomobileModule {}
