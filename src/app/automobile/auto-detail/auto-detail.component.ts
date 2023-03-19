@@ -10,7 +10,14 @@ import {AutoCrudService} from "../auto-crud.service";
 export class AutoDetailComponent {
   constructor(private route: ActivatedRoute) { }
   private autoCrudService = inject(AutoCrudService)
-  autoDetails:any
+  autoDetails:any = {pictures: [{}]}
+  activeImageIdx:number = 0
+
+  changeActiveImage(index: number) {
+    if(this.autoDetails?.pictures?.length) {
+      this.activeImageIdx = index
+    }
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {

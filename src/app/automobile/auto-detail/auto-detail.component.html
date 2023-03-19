@@ -3,40 +3,22 @@
     <div class="row g-0">
       <div class="col-md-6 border-end">
         <div class="d-flex flex-column justify-content-center">
+
           <div class="main_image">
             <img
-              src="https://vehicle-images.driveway.com/t_dw_iso/t_gallery/109009/ZASPAKAN7M7D16596/64125dacd593c9c97f711927-ISOLATED.jpg"
+              src="http://localhost:3001/uploads/{{autoDetails.pictures[activeImageIdx]?.fileName}}"
               id="main_product_image"
               width="350"
             />
           </div>
+
           <div class="thumbnail_images">
             <ul id="thumbnail">
-              <li>
+              <li *ngFor="let pic of autoDetails.pictures; index as i">
                 <img
-                  onclick="changeImage(this)"
-                  src="https://vehicle-images.driveway.com/t_dw_iso/t_gallery/108988/1GYKNGRS2LZ153352/6406dab0d593c9c97f510ec7-ISOLATED.jpg"
-                  width="70"
-                />
-              </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/w6kEctd.jpg"
-                  width="70"
-                />
-              </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/L7hFD8X.jpg"
-                  width="70"
-                />
-              </li>
-              <li>
-                <img
-                  onclick="changeImage(this)"
-                  src="https://i.imgur.com/6ZufmNS.jpg"
+                  (click)="changeActiveImage(i)"
+                  src="http://localhost:3001/uploads/{{pic?.fileName}}"
+                  alt="{{pic?.fileName}}"
                   width="70"
                 />
               </li>
@@ -53,6 +35,12 @@
           <div class="mt-2 pr-3 content">
             <p>
               {{autoDetails.description}}
+            </p>
+            <p>
+              Color: {{autoDetails.color}}
+            </p>
+            <p>
+              Interior color: {{autoDetails.interiorColor}}
             </p>
           </div>
           <h3>${{autoDetails.price}}</h3>

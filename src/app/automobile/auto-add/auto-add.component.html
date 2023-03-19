@@ -27,6 +27,17 @@
       >
     </div>
     <div class="form-group">
+      <label for="price">Price of car</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        formControlName="price"
+        id="price"
+        placeholder="Price"
+      >
+    </div>
+    <div class="form-group">
       <label for="description">Description of car</label>
       <input
         type="text"
@@ -48,32 +59,69 @@
         placeholder="Type"
       >
     </div>
-    <div class="row">
-      <div class="form-group color col-md-2 col-6">
-        <label for="color">Color of car</label>
-        <input
-          type="color"
-          class="form-control"
-          name="color"
-          formControlName="color"
-          id="color"
-          placeholder="Color"
-        >
-      </div>
-      <div class="form-group color col-6 mb-5">
-        <label for="interiorColor">Interior color</label>
-        <input
-          type="color"
-          class="form-control"
-          name="interiorColor"
-          formControlName="interiorColor"
-          id="interiorColor"
-          placeholder="Color"
-        >
-      </div>
+    <div class="form-group color">
+      <label for="color">Color of car</label>
+      <input
+        type="text"
+        class="form-control"
+        name="color"
+        formControlName="color"
+        id="color"
+        placeholder="Color"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="interiorColor">Interior color</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="interiorColor"
+        id="interiorColor"
+        placeholder="Color"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="long">Longitude</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="long"
+        id="long"
+        placeholder="longitude"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="lat">Latitude</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="lat"
+        id="lat"
+        placeholder="latitude"
+      >
     </div>
     <div class="form-group">
-
+      <p><label for="pictures">Upload pictures</label></p>
+      <input
+        type="file"
+        multiple
+        class="form-control-file"
+        id="pictures"
+        (change)="onFileChange($event)"
+      >
+    </div>
+    <div *ngIf="previews.length">
+      <hr>
+      <p>Previews</p>
+      <div class="row">
+        <div class="col-6" *ngFor="let src of previews; index as i">
+          <img class="img-fluid" src="{{src}}" alt="{{i}}" />
+        </div>
+      </div>
+      <hr>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
   </form>
