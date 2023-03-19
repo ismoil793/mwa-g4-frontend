@@ -25,7 +25,7 @@ const routes: Routes = [
     component: AutoAddComponent,
   },
   {
-    path: 'offers',
+    path: ':autoId/offers',
     component: OffersComponent,
   },
 ];
