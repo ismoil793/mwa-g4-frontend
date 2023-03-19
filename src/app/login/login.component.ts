@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ILoginRes } from '../Model/user.model';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,11 @@ export class LoginComponent {
         .login(this.getEmail(), this.getPassword())
         .subscribe((res: ILoginRes) => {
           console.log('login res: ', res);
-          localStorage.setItem('APPSTATE', JSON.stringify(res.data) );
+          //localStorage.setItem('APPSTATE', JSON.stringify(res.data) );
+          console.log('res.success: ', res.success)
+          if (res.success == true) {
+            this.userService.saveAppState(res.data);
+           }
         });
     }
   }
