@@ -38,7 +38,7 @@ export class SignupComponent {
         .subscribe((res: ILoginRes) => {
           console.log('signup res: ', res);
           if (res.success == true) {
-            this.userService.saveAppState(res.data);
+            this.userService.saveLoggedinState(res.data);
             this.erroMsg = '';
             //redirect to home
             this.router.navigate(['']);
