@@ -1,8 +1,9 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ILoginRes } from '../Model/user.model';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-   private userService = inject(AuthService);
+  private userService = inject(AuthService);
+  private router = inject(Router);
   form: FormGroup;
   subscription!: Subscription;
 
@@ -18,7 +20,7 @@ export class LoginComponent {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', Validators.required],
-      remember: [false]
+      remember: [false],
     });
   }
 
@@ -33,11 +35,13 @@ export class LoginComponent {
         .login(this.getEmail(), this.getPassword())
         .subscribe((res: ILoginRes) => {
           console.log('login res: ', res);
-          //localStorage.setItem('APPSTATE', JSON.stringify(res.data) );
-          console.log('res.success: ', res.success)
+
+          console.log('res.success: ', res.success);
           if (res.success == true) {
             this.userService.saveAppState(res.data);
-           }
+            //redirect to home
+            this.router.navigate(['']);
+          }
         });
     }
   }
@@ -49,8 +53,9 @@ export class LoginComponent {
   getPassword() {
     return this.form.get('password')?.value;
   }
-
-  OnDestroy() {
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
     this.subscription.unsubscribe();
   }
 }
