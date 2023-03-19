@@ -25,4 +25,19 @@ export class OfferService {
       body
     );
   }
+  public offerApproved(
+    autoId: string | null,
+    offerId: string,
+    body: { status: string }
+  ) {
+    return this.http.put<{ success: boolean; data: IUpdateRes }>(
+      this.rootUrL +
+        '/automobiles/' +
+        autoId +
+        '/offers/' +
+        offerId +
+        '/approved',
+      body
+    );
+  }
 }

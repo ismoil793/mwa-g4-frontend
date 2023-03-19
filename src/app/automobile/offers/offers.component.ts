@@ -28,10 +28,25 @@ export class OffersComponent implements OnInit, OnDestroy {
     this.loadData();
   }
 
+  onClickApproved(offerId: string) {
+    if (confirm('Are you sure?')) {
+      this.subscription = this.offerService
+        .offerApproved(this.autoId, offerId, { status: 'Approved' })
+        .subscribe(
+          (result: { success: boolean; data: IUpdateRes }) => {
+            this.loadData();
+          },
+          (error: Error) => {
+            console.log(error);
+          }
+        );
+    }
+  }
+
   onClickReject(offerId: string) {
     if (confirm('Are you sure?')) {
       this.subscription = this.offerService
-        .offerRejected(this.autoId, offerId, { status: 'rejected' })
+        .offerRejected(this.autoId, offerId, { status: 'Rejected' })
         .subscribe(
           (result: { success: boolean; data: IUpdateRes }) => {
             this.loadData();

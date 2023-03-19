@@ -4,7 +4,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Automobile description</h5>
+          <h5 class="card-title">Offer Details</h5>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ title }}</h5>
@@ -32,7 +32,11 @@
             <td>{{ item.status }}</td>
             <td>
               <ng-container *ngIf="item.status == '' || item.status == 'none'">
-                <button type="button" class="btn btn-primary btn-sm">
+                <button
+                  type="button"
+                  (click)="onClickApproved(item._id)"
+                  class="btn btn-primary btn-sm"
+                >
                   Approve
                 </button>
                 &nbsp;
