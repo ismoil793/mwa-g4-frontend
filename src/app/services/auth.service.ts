@@ -24,7 +24,7 @@ export class AuthService {
     return res;
   }
 
-  signup(email: string, password: string, fullname: string): Observable<ILoginRes> {
+  signup(fullname: string, email: string, password: string ): Observable<ILoginRes> {
     const res = this.httpClient.post<ILoginRes>(this.signupUrl, { email, password, fullname });
     console.log('signup()-res: ', res);
     return res;
