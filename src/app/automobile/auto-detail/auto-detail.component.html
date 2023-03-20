@@ -37,6 +37,9 @@
               {{autoDetails.description}}
             </p>
             <p>
+              {{autoDetails.description}}
+            </p>
+            <p>
               Color: {{autoDetails.color}}
             </p>
             <p>
@@ -57,8 +60,7 @@
 <!--          </div>-->
 
           <div class="buttons d-flex flex-row mt-5 gap-3">
-            <button class="btn btn-outline-dark">Buy Now</button>
-            <button class="btn btn-dark">Add to Basket</button>
+            <button (click)="buyAutomobile()" type="button" class="btn btn-dark">Buy Now</button>
           </div>
         </div>
       </div>

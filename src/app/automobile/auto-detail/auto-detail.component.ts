@@ -19,6 +19,10 @@ export class AutoDetailComponent {
     }
   }
 
+  buyAutomobile() {
+
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id') || ''
