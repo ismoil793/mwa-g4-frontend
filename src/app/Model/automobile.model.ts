@@ -13,8 +13,17 @@ export interface IAutoMobile {
   vin: number;
   type: string;
   price: number;
-  pictures: { fileName: string }[];
+  pictures: {
+    primary: string;
+    interior: string;
+  };
   location: [string, string];
   offers: IOffer[],
   createdAt: string
+}
+
+export interface IPurchased {
+  _id: string;
+  title: string;
+  offers: IOffer[];
 }

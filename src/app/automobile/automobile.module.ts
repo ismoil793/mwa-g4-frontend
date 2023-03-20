@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AutoEditComponent } from './auto-edit/auto-edit.component';
 import { MyAutomobilesComponent } from './my-automobiles/my-automobiles.component';
 import { OffersComponent } from './offers/offers.component';
+import { PurchasedComponent } from './purchased/purchased.component';
 
 const routes: Routes = [
   { path: '', component: ListComponent },
@@ -25,6 +26,10 @@ const routes: Routes = [
     component: AutoAddComponent,
   },
   {
+    path: 'purchased',
+    component: PurchasedComponent,
+  },
+  {
     path: ':autoId/offers',
     component: OffersComponent,
   },
@@ -37,6 +42,7 @@ const routes: Routes = [
     AutoEditComponent,
     MyAutomobilesComponent,
     OffersComponent,
+    PurchasedComponent,
   ],
   imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
 })
