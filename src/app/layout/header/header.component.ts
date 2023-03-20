@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
   private authService = inject(AuthService);
+  private router = inject(Router);
   private subscription!: Subscription;
   isLoggedIn = false;
 
@@ -24,7 +26,14 @@ export class HeaderComponent {
     this.authService.logout();
   }
 
+  onSearch(value: string) {
+    console.log('header search: ', value);
+    this.router.navigate(['search'], {
+      queryParams: { searchquery: value },
+    });
+  }
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }

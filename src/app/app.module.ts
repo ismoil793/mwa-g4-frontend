@@ -15,6 +15,8 @@ import { SharedModule } from './shared/shared.module';
 import { FilterComponent } from './dashboard/filter/filter.component';
 import { PriceFilterPipe } from './pipe/price-filter.pipe';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { SearchByTextComponent } from './search-by-text/search-by-text.component';
+import { SearchNearByComponent } from './search-near-by/search-near-by.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     DashboardComponent,
     FilterComponent,
     PriceFilterPipe,
+    SearchByTextComponent,
+    SearchNearByComponent,
   ],
   imports: [
     BrowserModule,

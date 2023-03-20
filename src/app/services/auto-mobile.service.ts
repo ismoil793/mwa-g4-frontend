@@ -21,4 +21,11 @@ export class AutoMobileService {
       this.rootUrL + '/automobiles/myAutomobiles'
     );
   }
+
+  public searchAutoMobiles(searchcQuery: string) {
+    return this.http.post<{ data: IAutoMobile[] }>(
+      this.rootUrL + '/automobiles/search',
+      { search_query: searchcQuery }
+    );
+  }
 }

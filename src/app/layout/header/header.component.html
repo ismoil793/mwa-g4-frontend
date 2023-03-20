@@ -39,6 +39,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['search']">search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['nearby']">near by cars</a>
+          </li>
+          <li class="nav-item">
             <a
               class="nav-link disabled"
               href="#"
@@ -48,15 +54,26 @@
             >
           </li>
         </ul>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <ul>
+          <li class="nav-item">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              #searchQuery
+              value="ford"
+            />
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-outline-success"
+              (click)="onSearch(searchQuery.value)"
+            >
+              Search
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
