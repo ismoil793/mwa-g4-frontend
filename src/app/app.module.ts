@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -17,7 +17,21 @@ import { PriceFilterPipe } from './pipe/price-filter.pipe';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SearchByTextComponent } from './search-by-text/search-by-text.component';
 import { SearchNearByComponent } from './search-near-by/search-near-by.component';
+import { AuthService } from './services/auth.service';
 
+function initializeAppFactory(authService: AuthService) {
+  const data: any = localStorage.getItem('APPSTATE');
+  if (data) {
+    const dataJson = JSON.parse(data);
+    authService.saveLoggedinState({
+      _id: dataJson._id,
+      email: dataJson.email,
+      fullname: dataJson.fullName,
+      jwt: dataJson.jwt,
+    });
+  }
+  return () => {};
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +53,20 @@ import { SearchNearByComponent } from './search-near-by/search-near-by.component
     SharedModule,
     ReactiveFormsModule,
   ],
-  providers: [{
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAppFactory,
+      deps: [AuthService],
+      multi: true,
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,
-    },],
+    },
+    AuthService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
