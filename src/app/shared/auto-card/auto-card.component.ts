@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-auto-card',
@@ -13,6 +14,7 @@ export class AutoCardComponent implements OnInit {
   @Input() type: string = '';
   @Input() pictures!: { fileName: string }[];
 
+  rootUrl = environment.imageRootUrl;
   filePathName!: string;
   constructor(private router: Router) {}
 
