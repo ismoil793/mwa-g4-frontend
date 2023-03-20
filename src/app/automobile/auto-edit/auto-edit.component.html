@@ -1,1 +1,111 @@
-<p>auto-edit works!</p>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <h4 class="text-center">Edit "{{formUpdate.value.title}}"</h4>
+  </div>
+  <form [formGroup]="formUpdate" (ngSubmit)="updateCar()" class="form-add-auto">
+    <div class="form-group">
+      <label for="title">Title of the offering (car)</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        formControlName="title"
+        id="title"
+        placeholder="Ex. Toyota Corolla 2011"
+        required
+      >
+    </div>
+    <div class="form-group">
+      <label for="vin">VIN</label>
+      <input
+        type="text"
+        class="form-control"
+        name="vin"
+        formControlName="vin"
+        id="vin"
+        placeholder="VIN"
+      >
+    </div>
+    <div class="form-group">
+      <label for="price">Price of car</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        formControlName="price"
+        id="price"
+        placeholder="Price"
+      >
+    </div>
+    <div class="form-group">
+      <label for="description">Description of car</label>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        formControlName="description"
+        id="description"
+        placeholder="Description"
+      >
+    </div>
+    <div class="form-group">
+      <label for="description">Type of car</label>
+      <input
+        type="text"
+        class="form-control"
+        name="type"
+        formControlName="type"
+        id="type"
+        placeholder="Type"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="color">Color of car</label>
+      <input
+        type="text"
+        class="form-control"
+        name="color"
+        formControlName="color"
+        id="color"
+        placeholder="Color"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="interiorColor">Interior color</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="interiorColor"
+        id="interiorColor"
+        placeholder="Color"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="long">Longitude</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="long"
+        id="long"
+        placeholder="longitude"
+      >
+    </div>
+    <div class="form-group color">
+      <label for="lat">Latitude</label>
+      <input
+        type="text"
+        class="form-control"
+        name="interiorColor"
+        formControlName="lat"
+        id="lat"
+        placeholder="latitude"
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <button (click)="deleteAuto()" type="button" class="mx-4 btn btn-danger">
+      Delete
+    </button>
+  </form>
+</div>
