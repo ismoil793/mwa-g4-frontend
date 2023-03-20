@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     //console.log(data);
     this.priceFilterParams = data;
   }
+
   priceSortEvent(data: { sort: string }) {
     if (data.sort == 'priceAsc') {
       this.autoCards = [...this.autoCards.sort((a, b) => a.price - b.price)];
@@ -45,6 +46,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   trackByFn(index: number, item: IAutoMobile) {
     return item._id;
+  }
+
+  searchNearBy(data: { nearby: string }) {
+    console.log('searchNearBy(): router nagivated', data.nearby);
+    this.router.navigate(['nearby']);
   }
 
   ngOnDestroy() {

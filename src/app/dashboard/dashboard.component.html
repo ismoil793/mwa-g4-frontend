@@ -1,18 +1,19 @@
 <div class="container mt-50 mb-50">
   <div class="row" *ngIf="autoCards.length>0">
     <aside class="col-md-3 mt-2">
-      <app-filter 
+      <app-filter
       (priceRangeFilterEvent)="priceRangeFilter($event)"
-      (priceSortEvent)="priceSortEvent($event)"/>
+      (priceSortEvent)="priceSortEvent($event)"
+      (searchNearByEvent)="searchNearBy($event)"/>
     </aside>
     <div class="col-md-9">
       <div class="row" >
         <div class="col-md-4 mt-2" *ngFor="let item of autoCards|priceFilter:priceFilterParams; index as i; trackBy: trackByFn">
-          <app-auto-card 
-            [id]="item._id" 
-            [title]="item.title"  
-            [price]="item.price"  
-            [type]="item.type" 
+          <app-auto-card
+            [id]="item._id"
+            [title]="item.title"
+            [price]="item.price"
+            [type]="item.type"
             [pictures]="item.pictures" />
         </div>
       </div>
