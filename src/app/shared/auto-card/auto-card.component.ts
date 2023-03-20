@@ -18,7 +18,7 @@ export class AutoCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.filePathName = 'image-1.jpg';
-    if (this.pictures.length > 0) {
+    if (this.pictures && this.pictures.length > 0) {
       this.filePathName = this.pictures[0].fileName;
     }
   }

@@ -100,4 +100,31 @@
       <!-- card-body.// -->
     </div>
   </article>
+  <article class="filter-group">
+    <header class="card-header">
+      <a
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapse_2"
+        aria-expanded="true"
+        class=""
+      >
+        <i class="icon-control fa fa-chevron-down"></i>
+        <h6 class="title">Near by</h6>
+      </a>
+    </header>
+    <form
+      class="filter-content collapse show"
+      id="collapse_3"
+      [formGroup]="nearByForm"
+      (ngSubmit)="onNearBySubmit()"
+    >
+      <div class="p-3">
+        <div class="form-check">
+          <button type="submit" class="btn bg-cart mt-4">Near by cars</button>
+        </div>
+      </div>
+      <!-- card-body.// -->
+    </form>
+  </article>
 </div>

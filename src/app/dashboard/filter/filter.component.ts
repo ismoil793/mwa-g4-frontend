@@ -20,8 +20,14 @@ export class FilterComponent implements OnInit {
   @Output() priceSortEvent = new EventEmitter<{
     sort: string;
   }>();
+
+  @Output() searchNearByEvent = new EventEmitter<{
+    nearby: string;
+  }>();
+
   filterForm!: FormGroup;
   sortForm!: FormGroup;
+  nearByForm!: FormGroup;
   invalid: boolean = false;
 
   private subscription!: Subscription;
@@ -42,6 +48,7 @@ export class FilterComponent implements OnInit {
     this.sortForm = this.formBuilder.group({
       sort: new FormControl('', Validators.required),
     });
+    this.nearByForm = this.formBuilder.group({});
   }
 
   onPriceRangeSubmit() {
@@ -56,8 +63,14 @@ export class FilterComponent implements OnInit {
       this.priceRangeFilterEvent.emit(this.filterForm.value);
     }
   }
+
   sortSubmit() {
     console.log(this.sortForm.value);
     this.priceSortEvent.emit(this.sortForm.value);
+  }
+
+  onNearBySubmit() {
+    console.log('onNearBySubmit() - emitted');
+    this.searchNearByEvent.emit({ nearby: 'search nearby' });
   }
 }

@@ -29,6 +29,13 @@ export class AutoMobileService {
     );
   }
 
+  public searchNearByAutoMobiles() {
+    console.log('AutoMobileService.searchNearByAutoMobiles()');
+    return this.http.get<{ data: IAutoMobile[] }>(
+      this.rootUrL + '/automobiles/search/nearby'
+    );
+  }
+
   public getPurchased() {
     return this.http.get<{ data: IPurchased[] }>(
       this.rootUrL + '/automobiles/purchased'
