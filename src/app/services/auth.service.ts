@@ -61,7 +61,7 @@ export class AuthService {
       const user = JSON.parse(appState);
       console.log('user: ', user);
       if (user) {
-        return user;
+        return user.jwt;
       } else {
         return null;
       }
