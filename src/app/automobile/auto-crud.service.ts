@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {environment} from "../../environments/environment.development";
 import {IAuto} from "../interfaces/IAuto";
+import {IOffer} from "../interfaces/IOffer";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class AutoCrudService {
 
   deleteAutomobile(id: string) {
     return this.http.delete<any>(`${environment.rootUrl}/automobiles/${id}`)
+  }
+
+  makeOffer(id: string, offer: IOffer) {
+    return this.http.post<any>(`${environment.rootUrl}/automobiles/${id}/offers`, offer)
   }
 
   constructor() { }
