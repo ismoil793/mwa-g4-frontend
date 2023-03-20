@@ -1,4 +1,4 @@
-import { IOffer } from "./offer.model";
+import { IOffer } from './offer.model';
 
 export interface IAutoMobile {
   _id: string;
@@ -15,6 +15,12 @@ export interface IAutoMobile {
   price: number;
   pictures: { fileName: string }[];
   location: [string, string];
-  offers: IOffer[],
-  createdAt: string
+  offers: IOffer[];
+  createdAt: string;
+}
+
+export interface IPurchased {
+  _id: string;
+  title: string;
+  offers: IOffer[];
 }

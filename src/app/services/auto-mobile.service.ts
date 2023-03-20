@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 
-import { IAutoMobile } from './../Model/automobile.model';
+import { IAutoMobile, IPurchased } from './../Model/automobile.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +26,12 @@ export class AutoMobileService {
     return this.http.post<{ data: IAutoMobile[] }>(
       this.rootUrL + '/automobiles/search',
       { search_query: searchcQuery }
+    );
+  }
+
+  public getPurchased() {
+    return this.http.get<{ data: IPurchased[] }>(
+      this.rootUrL + '/automobiles/purchased'
     );
   }
 }
