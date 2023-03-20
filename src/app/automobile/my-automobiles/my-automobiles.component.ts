@@ -3,6 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AutoMobileService } from '../../services/auto-mobile.service';
 import { IAutoMobile } from '../../Model/automobile.model';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-automobiles',
@@ -13,7 +15,10 @@ export class MyAutomobilesComponent implements OnInit, OnDestroy {
   myAutomobiles: IAutoMobile[] = [];
   private subscription!: Subscription;
 
-  constructor(private autoMobileService: AutoMobileService) {}
+  constructor(
+    private autoMobileService: AutoMobileService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.subscription = this.autoMobileService.getMyAutoMobiles().subscribe(
@@ -30,5 +35,9 @@ export class MyAutomobilesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onClickOffer(autoId: string) {
+    this.router.navigate(['automobile', autoId, 'offers']);
   }
 }

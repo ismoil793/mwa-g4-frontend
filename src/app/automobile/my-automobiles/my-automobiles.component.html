@@ -1,23 +1,25 @@
 <h3>My automobiles</h3>
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Vin</th>
-        <th scope="col">Type</th>
-        <th scope="col">Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let automobile of myAutomobiles; index as i">
-        <th scope="row">{{i+1}}</th>
-        <td>{{automobile.title}}</td>
-        <td>{{automobile.vin}}</td>
-        <td>@{{automobile.type}}</td>
-        <td>@{{automobile.price}}</td>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Vin</th>
+      <th scope="col">Type</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let automobile of myAutomobiles; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ automobile.title }}</td>
+      <td>{{ automobile.vin }}</td>
+      <td>@{{ automobile.type }}</td>
+      <td>@{{ automobile.price }}</td>
+      <td>
         <button>Delete</button>
-        <button>View</button>
-      </tr>
-    </tbody>
-  </table>
+        <button (click)="onClickOffer(automobile._id)">Offers</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
