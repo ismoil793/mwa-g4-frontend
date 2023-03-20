@@ -25,6 +25,9 @@ export class AutoAddComponent {
     long: '',
     lat: '',
     price: '',
+    state: '',
+    city: '',
+    zipcode: '',
   })
 
   onFileChange(event:any) {
