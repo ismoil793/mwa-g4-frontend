@@ -51,20 +51,24 @@ export class AutoAddComponent {
   }
 
   createCar() {
-    this.autoCrudService.addAutomobile(this.formAddCar.value as IAuto)
-      .subscribe(response => {
-        const {_id} = response.data
-        if(this.myFiles.length) {
-          const formData = new FormData();
-          for (let i = 0; i < this.myFiles.length; i++) {
-            formData.append("picture", this.myFiles[i]);
-          }
-          this.autoCrudService.uploadAutoImages(_id, formData).subscribe(() => {
+    if(this.formAddCar.valid) {
+      this.autoCrudService.addAutomobile(this.formAddCar.value as IAuto)
+        .subscribe(response => {
+          const {_id} = response.data
+          if(this.myFiles.length) {
+            const formData = new FormData();
+            for (let i = 0; i < this.myFiles.length; i++) {
+              formData.append("picture", this.myFiles[i]);
+            }
+            this.autoCrudService.uploadAutoImages(_id, formData).subscribe(() => {
+              this.autoCreateSuccess(_id)
+            })
+          } else {
             this.autoCreateSuccess(_id)
-          })
-        } else {
-          this.autoCreateSuccess(_id)
-        }
-      })
+          }
+        })
+    } else {
+      alert("Form is invalid")
+    }
   }
 }

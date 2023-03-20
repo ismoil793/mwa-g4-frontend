@@ -36,11 +36,13 @@ export class AutoEditComponent {
   constructor(private route: ActivatedRoute) { }
 
   updateCar() {
-    this.autoCrudService.updateAutoById(this.autoId, this.formUpdate.value as IAuto)
-      .subscribe(response => {
-        alert("Updated successfully!")
-        this.fetchAutoById()
-      })
+    if(this.formUpdate.valid) {
+      this.autoCrudService.updateAutoById(this.autoId, this.formUpdate.value as IAuto)
+        .subscribe(response => {
+          alert("Updated successfully!")
+          this.fetchAutoById()
+        })
+    }
   }
 
   deleteAuto() {
