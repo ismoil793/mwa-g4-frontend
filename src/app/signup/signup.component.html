@@ -1,17 +1,33 @@
-<form [formGroup]="form">
-  <div class="mb-3 mt-3">
-    <label for="fullname" class="form-label">Full Name:</label>
-    <input type="text" class="form-control" formControlName="fullname" />
+<div class="content-center mt-50 mb-50">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <form [formGroup]="form">
+        <div class="mb-3 mt-3">
+          <label for="fullname" class="form-label">Full Name:</label>
+          <input type="text" class="form-control" formControlName="fullname" />
+        </div>
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" formControlName="email" />
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="signup()">
+          Signup
+        </button>
+        <p class="small fw-bold mt-2 pt-1 mb-0">
+          Have an account?
+          <a href="#!" [routerLink]="['', 'login']" class="link-danger"
+            >Log in</a
+          >
+        </p>
+      </form>
+    </div>
   </div>
-  <div class="mb-3 mt-3">
-    <label for="email" class="form-label">Email:</label>
-    <input type="email" class="form-control" formControlName="email" />
-  </div>
-  <div class="mb-3">
-    <label for="pwd" class="form-label">Password:</label>
-    <input type="password" class="form-control" formControlName="password" />
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="signup()">
-    Signup
-  </button>
-</form>
+</div>
