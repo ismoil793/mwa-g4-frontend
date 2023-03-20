@@ -74,6 +74,15 @@ export class AuthService {
     return localStorage.getItem('APPSTATE');
   }
 
+  getUserId() {
+    const appState = this.getAppState() || '';
+    if(appState) {
+      const user = JSON.parse(appState);
+      return user._id
+    }
+    return ''
+  }
+
   saveLoggedinState(user: IUser) {
     console.log('save APPSTATE');
     localStorage.setItem('APPSTATE', JSON.stringify(user));

@@ -1,7 +1,7 @@
 export interface IOffer {
   _id: string;
   userId: string;
-  fullname: string;
+  fullName: string;
   status: string; //approved, reject, none
   comment: string;
 }
