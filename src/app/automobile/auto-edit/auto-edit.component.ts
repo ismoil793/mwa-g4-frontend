@@ -23,7 +23,10 @@ export class AutoEditComponent {
     interiorColor: '',
     price: '',
     lat: '',
-    long: ''
+    long: '',
+    state: '',
+    city: '',
+    zipcode: ''
   })
 
   clearForm() {
