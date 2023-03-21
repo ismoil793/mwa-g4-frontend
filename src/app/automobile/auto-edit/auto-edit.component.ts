@@ -63,9 +63,9 @@ export class AutoEditComponent {
         const {location, ...rest} = response.data
         let lat = ''
         let long = ''
-        if(location.length > 1) {
-          long = location[0]
-          lat = location[1]
+        if(location?.coordinates?.length > 1) {
+          long = location.coordinates[0]
+          lat = location.coordinates[1]
         }
         this.formUpdate.patchValue({...rest, lat, long})
       })

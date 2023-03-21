@@ -44,6 +44,10 @@ export class ProfileComponent {
           console.log('Error: get userStat failed')
         }
       });
+    if (this.user.location?.coordinates) {
+      this.form.get('longitude')?.setValue(this.user.location?.coordinates[0]);
+      this.form.get('latitude')?.setValue(this.user.location?.coordinates[1]);
+    }
   }
 
   handleClick() {
@@ -53,8 +57,8 @@ export class ProfileComponent {
         .subscribe((res: ILoginRes) => {
           console.log('updateProfile res: ', res);
           if (res.success == true) {
-            console.log('updatedProfile: success')
-            this.form.reset();
+            console.log('updatedProfile: success');
+            //this.form.reset();
             this.submitSuccess = true;
             this.erroMsg = '';
           } else {
@@ -62,7 +66,7 @@ export class ProfileComponent {
           }
         });
 
-        return;
+      return;
     }
   }
 

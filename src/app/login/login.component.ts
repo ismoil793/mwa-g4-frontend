@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { ILoginRes } from '../Model/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   isLoginError = false;
   loginErrorMessage = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', Validators.required],
@@ -45,6 +46,7 @@ export class LoginComponent {
             this.isLoginError = false;
             this.loginErrorMessage = res.data.msg || '';
             //redirect to home
+            this.toastr.success('Welcome ' + this.userService.getUserName());
             this.router.navigate(['']);
           } else {
             this.loginErrorMessage = res.data.msg || '';
