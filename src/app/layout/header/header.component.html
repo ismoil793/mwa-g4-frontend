@@ -2,7 +2,13 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">MIU Auto Sales</a>
+      <a class="navbar-brand" [routerLink]="['']"
+        >MIU Auto Sales
+        <span style="font-size: 17px" *ngIf="isLoggedIn"
+          >| {{ userName }}</span
+        ></a
+      >
+
       <button
         class="navbar-toggler"
         type="button"
@@ -15,44 +21,52 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" style="font-size: 17px">
           <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a
+              class="nav-link"
+              [routerLinkActive]="['active']"
+              aria-current="page"
+              [routerLink]="['', 'dashboard']"
+              >Home</a
+            >
           </li>
-          <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link" [routerLink]="['login']" (click)="logout()">
-              Logout
-            </a>
-          </li>
+
           <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" [routerLink]="['login']">Login</a>
           </li>
           <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" [routerLink]="['signup']">Signup</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="isLoggedIn">
             <a
               class="nav-link"
+              [routerLinkActive]="['active']"
               [routerLink]="['', 'automobile', 'myAutomobiles']"
             >
               My Automobiles
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a
+              class="nav-link"
+              [routerLinkActive]="['active']"
+              [routerLink]="['', 'automobile', 'purchased']"
+            >
+              Purchased
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" [routerLink]="['login']" (click)="logout()">
+              Logout
+            </a>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" [routerLink]="['search']">search</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['nearby']">near by cars</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
+          </li> -->
         </ul>
         <div class="d-flex">
           <input
