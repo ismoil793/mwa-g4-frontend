@@ -5,7 +5,9 @@
         <div class="d-flex flex-column justify-content-center">
           <div class="main_image">
             <img
-              src="http://localhost:3001/uploads/{{autoDetails.pictures[activeImageIdx]?.fileName}}"
+              src="http://localhost:3001/uploads/{{
+                autoDetails.pictures[activeImageIdx]?.fileName
+              }}"
               id="main_product_image"
               width="350"
             />
@@ -15,8 +17,8 @@
               <li *ngFor="let pic of autoDetails.pictures; index as i">
                 <img
                   (click)="changeActiveImage(i)"
-                  src="http://localhost:3001/uploads/{{pic?.fileName}}"
-                  alt="{{pic?.fileName}}"
+                  src="http://localhost:3001/uploads/{{ pic?.fileName }}"
+                  alt="{{ pic?.fileName }}"
                   width="70"
                 />
               </li>
@@ -27,35 +29,43 @@
       <div class="col-md-6">
         <div class="p-3 right-side">
           <div class="d-flex justify-content-between align-items-center">
-            <h3>{{autoDetails.title}}</h3>
+            <h3>{{ autoDetails.title }}</h3>
             <span class="heart"><i class="bx bx-heart"></i></span>
           </div>
           <div class="mt-2 pr-3 content">
             <p>
-              {{autoDetails.description}}
+              {{ autoDetails.description }}
             </p>
+            <p>Color: {{ autoDetails.color }}</p>
+            <p>Interior color: {{ autoDetails.interiorColor }}</p>
             <p>
-              Color: {{autoDetails.color}}
-            </p>
-            <p>
-              Interior color: {{autoDetails.interiorColor}}
-            </p>
-            <p>
-              Address: {{autoDetails.city}}, {{autoDetails.state}} {{autoDetails.zipcode}}
+              Address: {{ autoDetails.city }}, {{ autoDetails.state }}
+              {{ autoDetails.zipcode }}
             </p>
           </div>
-          <h3>${{autoDetails.price}}</h3>
-<!--          <div class="ratings d-flex flex-row align-items-center">-->
-<!--            <div class="d-flex flex-row">-->
-<!--              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>-->
-<!--              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>-->
-<!--              <i class="bx bx-star"></i>-->
-<!--            </div>-->
-<!--            <span>441 reviews</span>-->
-<!--          </div>-->
+          <h3>${{ autoDetails.price }}</h3>
+          <!--          <div class="ratings d-flex flex-row align-items-center">-->
+          <!--            <div class="d-flex flex-row">-->
+          <!--              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>-->
+          <!--              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>-->
+          <!--              <i class="bx bx-star"></i>-->
+          <!--            </div>-->
+          <!--            <span>441 reviews</span>-->
+          <!--          </div>-->
 
           <div class="buttons d-flex flex-row mt-5 gap-3">
-            <button *ngIf="shouldShowOfferBtn" (click)="buyAutomobile()" type="button" class="btn btn-dark">Buy Now</button>
+            <button
+              *ngIf="shouldShowOfferBtn"
+              (click)="buyAutomobile()"
+              type="button"
+              class="btn btn-dark"
+            >
+              Buy Now
+            </button>
+
+            <p *ngIf="alreadyMadeOffer" class="small fw-bold mt-2 pt-1 mb-0">
+              You have made a request
+            </p>
           </div>
         </div>
       </div>
