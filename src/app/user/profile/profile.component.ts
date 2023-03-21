@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { ILoginRes, IUser } from 'src/app/Model/user.model';
+import { IuserStats, IuserStatsRes } from 'src/app/Model/userStats.model';
 import { ProfileService } from '../profile.service';
 
 @Component({
@@ -16,9 +17,12 @@ export class ProfileComponent {
 
   erroMsg: string = '';
   form: FormGroup;
-  subscription!: Subscription;
+  authSubscription!: Subscription;
+  statsSubscription!: Subscription;
   user!: IUser;
-  submitSuccess: boolean = false;
+  stats:IuserStats = {_id:'', total_sales:0,count:0}
+  statsuccess:boolean = false
+  submitSuccess:boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -29,6 +33,18 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     this.user = this.authService.getUserInfo();
+    this.statsSubscription = this.proileService
+      .userStats()
+      .subscribe((res: IuserStatsRes) => {
+        console.log('userStats res: ', res);
+        if (res.success == true) {
+         if(res.data.length != 0)
+         this.stats = res.data[0];
+         this.statsuccess = true;
+        } else {
+          console.log('Error: get userStat failed')
+        }
+      });
     if (this.user.location?.coordinates) {
       this.form.get('longitude')?.setValue(this.user.location?.coordinates[0]);
       this.form.get('latitude')?.setValue(this.user.location?.coordinates[1]);
@@ -37,7 +53,7 @@ export class ProfileComponent {
 
   handleClick() {
     if (this.form.valid) {
-      this.subscription = this.proileService
+      this.authSubscription = this.proileService
         .updateUser(this.getLongitude(), this.getLatitude())
         .subscribe((res: ILoginRes) => {
           console.log('updateProfile res: ', res);

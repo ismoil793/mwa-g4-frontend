@@ -1,137 +1,178 @@
-  <section style="background-color: #eee">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col">
-          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item active" aria-current="page">
-                User Profile
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item active" aria-current="page">
+              User Profile
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              alt="avatar"
+              class="rounded-circle img-fluid"
+              style="width: 150px"
+            />
+            <h5 class="my-3">{{ this.user.fullname }}</h5>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-cash-coin"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"
+                    />
+                    <path
+                      d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"
+                    />
+                    <path
+                      d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"
+                    />
+                    <path
+                      d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"
+                    />
+                  </svg>
+                  Total sale
+                </div>
+                <p *ngIf="statsuccess" class="mb-0">
+                  {{ this.stats.total_sales | currency }}
+                </p>
               </li>
-            </ol>
-          </nav>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                <div>
+                  <p class="mb-0"></p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-car-front-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"
+                    />
+                  </svg>
+                  Automobiles sold
+                </div>
+                <p *ngIf="statsuccess" class="mb-0">
+                  {{ this.stats.count | number }}
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                alt="avatar"
-                class="rounded-circle img-fluid"
-                style="width: 150px"
-              />
-              <h5 class="my-3">{{this.user.fullname}}</h5>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                />
-              </svg>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ this.user.fullname }}</p>
+              </div>
             </div>
-          </div>
-          <div class="card mb-4 mb-lg-0">
-            <div class="card-body p-0">
-              <ul class="list-group list-group-flush rounded-3">
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center p-3"
-                >
-                  <i class="fas fa-globe fa-lg text-warning"></i>
-                  <p class="mb-0">Total sold</p>
-                </li>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center p-3"
-                >
-                  <i class="fab fa-github fa-lg" style="color: #333333"></i>
-                  <p class="mb-0">Total automvilies sold</p>
-                </li>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center p-3"
-                >
-                  <i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
-                  <p class="mb-0">Rank</p>
-                </li>
-              </ul>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ this.user.email }}</p>
+              </div>
             </div>
+            <hr />
           </div>
         </div>
-        <div class="col-lg-8">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{this.user.fullname}}</p>
-                </div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{this.user.email}}</p>
-                </div>
-              </div>
-              <hr />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-primary font-italic me-1">Update</span>
-                    Location
-                  </p>
-                  <form [formGroup]="form">
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Longitude</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Longitude"
-                        formControlName="longitude"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Latitude</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Latitude"
-                        formControlName="latitude"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      class="btn btn-primary"
-                      (click)="handleClick()"
-                      [disabled]="!form.valid"
-                    >
-                      Submit
-                    </button>
-                    <hr />
-                    <div *ngIf="submitSuccess" class="alert alert-success" role="alert">
-                      User profile updated!
-                    </div>
-                  </form>
-                </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-primary font-italic me-1">Update</span>
+                  Location
+                </p>
+                <form [formGroup]="form">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Longitude</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Longitude"
+                      formControlName="longitude"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Latitude</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Latitude"
+                      formControlName="latitude"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    (click)="handleClick()"
+                    [disabled]="!form.valid"
+                  >
+                    Submit
+                  </button>
+                  <hr />
+                  <div
+                    *ngIf="submitSuccess"
+                    class="alert alert-success"
+                    role="alert"
+                  >
+                    User profile updated!
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
