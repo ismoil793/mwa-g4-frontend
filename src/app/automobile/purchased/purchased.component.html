@@ -22,7 +22,20 @@
           >
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.title }}</td>
-            <td>{{ item.offers[0].status }}</td>
+            <td>
+              <span
+                *ngIf="item.offers[0].status == 'Rejected'"
+                class="badge badge-pill badge-primary"
+                style="background-color: red"
+                >{{ item.offers[0].status }}</span
+              >
+              <span
+                *ngIf="item.offers[0].status == 'Approved'"
+                class="badge badge-pill badge-primary"
+                style="background-color: green"
+                >{{ item.offers[0].status }}</span
+              >
+            </td>
             <td>{{ item.offers[0].comment }}</td>
           </tr>
         </tbody>

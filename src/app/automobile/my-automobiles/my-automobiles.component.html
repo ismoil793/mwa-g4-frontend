@@ -22,6 +22,7 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Type</th>
+            <th>Status</th>
             <th scope="col">Date posted</th>
             <th scope="col">Offers</th>
             <th scope="col">Price</th>
@@ -32,18 +33,37 @@
             <th scope="row">{{ i + 1 }}</th>
             <td class="align-middle">{{ automobile.title }}</td>
             <td class="align-middle">{{ automobile.type }}</td>
+            <td class="align-middle">
+              <span
+                class="badge badge-pill badge-primary"
+                style="background-color: red"
+                >{{ automobile.status }}</span
+              >
+            </td>
             <td class="align-middle">{{ automobile.createdAt | date }}</td>
             <td class="align-middle">{{ automobile.offers.length }}</td>
             <td class="align-middle">{{ automobile.price | currency }}</td>
-            <td >
-              <button (click)="onClickOffer(automobile._id)"  type="button" class="btn btn-primary btn-sm">
+            <td>
+              <button
+                (click)="onClickOffer(automobile._id)"
+                type="button"
+                class="btn btn-primary btn-sm"
+              >
                 <i class="fa fa-cart-plus mr-2"></i> Offers
               </button>
-              <a [routerLink]="['', 'automobile', 'auto-edit', automobile._id]"  type="button" class="btn btn-secondary btn-sm mx-3">
-                 Edit
+              <a
+                [routerLink]="['', 'automobile', 'auto-edit', automobile._id]"
+                type="button"
+                class="btn btn-secondary btn-sm mx-3"
+              >
+                Edit
               </a>
-              <a [routerLink]="['', 'automobile', 'auto-detail', automobile._id]"  type="button" class="btn btn-success btn-sm">
-                 View
+              <a
+                [routerLink]="['', 'automobile', 'auto-detail', automobile._id]"
+                type="button"
+                class="btn btn-success btn-sm"
+              >
+                View
               </a>
             </td>
           </tr>
