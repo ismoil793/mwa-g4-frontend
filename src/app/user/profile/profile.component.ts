@@ -20,7 +20,7 @@ export class ProfileComponent {
   authSubscription!: Subscription;
   statsSubscription!: Subscription;
   user!: IUser;
-  stats! :IuserStats;
+  stats:IuserStats = {_id:'', total_sales:0,count:0}
   statsuccess:boolean = false
   submitSuccess:boolean = false;
 
@@ -38,6 +38,7 @@ export class ProfileComponent {
       .subscribe((res: IuserStatsRes) => {
         console.log('userStats res: ', res);
         if (res.success == true) {
+         if(res.data.length != 0)
          this.stats = res.data[0];
          this.statsuccess = true;
         } else {
