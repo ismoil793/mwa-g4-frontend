@@ -80,6 +80,21 @@
           <button class="btn btn-success" (click)="onSearch(searchQuery.value)">
             Search
           </button>
+          <div class="d-flex p-1">
+            <a
+              class="nav-link"
+              [routerLinkActive]="['active']"
+              [routerLink]="['', 'profile']"
+            >
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
+                class="rounded-circle"
+                height="33"
+                alt="Avatar"
+                loading="lazy"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

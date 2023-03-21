@@ -1,56 +1,137 @@
-<div class="content-center mt-50 mb-50">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="row py-4">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Profile information</h1>
+  <section style="background-color: #eee">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item active" aria-current="page">
+                User Profile
+              </li>
+            </ol>
+          </nav>
         </div>
       </div>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Name"
-            disabled
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Email"
-            disabled
-          />
-          <!-- <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small> -->
-        </div>
 
-        <div class="form-group">
-          <label for="exampleInputPassword1">Longitude</label>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Longitude"
-          />
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                alt="avatar"
+                class="rounded-circle img-fluid"
+                style="width: 150px"
+              />
+              <h5 class="my-3">{{this.user.fullname}}</h5>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-star-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">Total sold</p>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fab fa-github fa-lg" style="color: #333333"></i>
+                  <p class="mb-0">Total automvilies sold</p>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
+                  <p class="mb-0">Rank</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Latitude</label>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Latitude"
-          />
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{this.user.fullname}}</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{this.user.email}}</p>
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4">
+                    <span class="text-primary font-italic me-1">Update</span>
+                    Location
+                  </p>
+                  <form [formGroup]="form">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Longitude</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Longitude"
+                        formControlName="longitude"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Latitude</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Latitude"
+                        formControlName="latitude"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="handleClick()"
+                      [disabled]="!form.valid"
+                    >
+                      Submit
+                    </button>
+                    <hr />
+                    <div *ngIf="submitSuccess" class="alert alert-success" role="alert">
+                      User profile updated!
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
