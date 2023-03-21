@@ -16,6 +16,8 @@ export class SignupComponent {
   erroMsg: string = '';
   form: FormGroup;
   subscription!: Subscription;
+  isSignupError = false;
+  signupErrorMessage = '';
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -39,11 +41,13 @@ export class SignupComponent {
           console.log('signup res: ', res);
           if (res.success == true) {
             this.userService.saveLoggedinState(res.data);
+            this.isSignupError = false;
             this.erroMsg = '';
             //redirect to home
             this.router.navigate(['']);
           } else {
-            this.erroMsg = res.data.msg || '';
+            this.signupErrorMessage = res.data.msg || '';
+            this.isSignupError = true;
           }
         });
     }

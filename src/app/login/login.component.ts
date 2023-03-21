@@ -15,6 +15,8 @@ export class LoginComponent {
   private router = inject(Router);
   form: FormGroup;
   subscription!: Subscription;
+  isLoginError = false;
+  loginErrorMessage = '';
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -27,6 +29,7 @@ export class LoginComponent {
   ngOnInit(): void {
     this.form.get('email')?.setValue('zaman@miu.edu');
     this.form.get('password')?.setValue('123');
+    this.isLoginError = false;
   }
 
   login() {
@@ -39,8 +42,13 @@ export class LoginComponent {
           console.log('res.success: ', res.success);
           if (res.success == true) {
             this.userService.saveLoggedinState(res.data);
+            this.isLoginError = false;
+            this.loginErrorMessage = res.data.msg || '';
             //redirect to home
             this.router.navigate(['']);
+          } else {
+            this.loginErrorMessage = res.data.msg || '';
+            this.isLoginError = true;
           }
         });
     }
