@@ -26,7 +26,7 @@ function initializeAppFactory(authService: AuthService) {
     authService.saveLoggedinState({
       _id: dataJson._id,
       email: dataJson.email,
-      fullname: dataJson.fullName,
+      fullname: dataJson.fullname,
       jwt: dataJson.jwt,
     });
   }
