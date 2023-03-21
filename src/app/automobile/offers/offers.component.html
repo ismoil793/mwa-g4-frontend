@@ -32,7 +32,20 @@
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.fullName }}</td>
             <td>{{ item.comment }}</td>
-            <td>{{ item.status }}</td>
+            <td>
+              <span
+                *ngIf="item.status == 'Rejected'"
+                class="badge badge-pill badge-primary"
+                style="background-color: red"
+                >{{ item.status }}</span
+              >
+              <span
+                *ngIf="item.status == 'Approved'"
+                class="badge badge-pill badge-primary"
+                style="background-color: green"
+                >{{ item.status }}</span
+              >
+            </td>
             <td>
               <ng-container *ngIf="item.status == '' || item.status == 'none'">
                 <button
