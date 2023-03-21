@@ -14,6 +14,7 @@ export class AutoAddComponent {
   private router = inject(Router)
   myFiles: any = []
   previews: any = []
+  hasError: boolean = false
 
   formAddCar = inject(FormBuilder).group({
     title: '',
@@ -52,6 +53,7 @@ export class AutoAddComponent {
 
   createCar() {
     if(this.formAddCar.valid) {
+      this.hasError = false
       this.autoCrudService.addAutomobile(this.formAddCar.value as IAuto)
         .subscribe(response => {
           const {_id} = response.data
@@ -68,7 +70,12 @@ export class AutoAddComponent {
           }
         })
     } else {
-      alert("Form is invalid")
+      this.hasError = true
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
   }
 }
