@@ -11,6 +11,11 @@ import { SearchNearByComponent } from './search-near-by/search-near-by.component
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'search',
     component: SearchByTextComponent,
     canActivate: [AuthGuard],
@@ -33,7 +38,7 @@ const routes: Routes = [
   },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({

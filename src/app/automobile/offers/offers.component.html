@@ -2,14 +2,17 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
+      <h5 class="d-block card-title pb-2">Offer Details</h5>
       <div class="card">
-        <div class="card-header">
+        <!-- <div class="card-header">
           <h5 class="card-title">Offer Details</h5>
-        </div>
+        </div> -->
         <div class="card-body">
           <h5 class="card-title">{{ title }}</h5>
           <p class="card-text"><b>VIN</b>: {{ vin }}</p>
-          <a href="#" class="btn btn-primary">Back</a>
+          <a [routerLink]="['', 'automobile', 'myAutomobiles']" class="btn-link"
+            >Back</a
+          >
         </div>
       </div>
       <br />
