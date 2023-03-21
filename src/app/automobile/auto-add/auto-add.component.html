@@ -2,6 +2,9 @@
   <div class="row">
     <h4 class="text-center">Add new automobile</h4>
   </div>
+  <div class="text-danger text-center my-2 fw-bold" *ngIf="hasError">
+    <p>Please fill required fields</p>
+  </div>
   <form [formGroup]="formAddCar" (ngSubmit)="createCar()" class="form-add-auto">
     <div class="form-group">
       <label for="title">Title of the offering (car)</label>
