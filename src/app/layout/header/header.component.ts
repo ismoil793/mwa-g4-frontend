@@ -13,11 +13,13 @@ export class HeaderComponent {
   private router = inject(Router);
   private subscription!: Subscription;
   isLoggedIn = false;
+  userName: string = '';
 
   ngOnInit(): void {
     this.subscription = this.authService.loggedInState$.subscribe(
       (loggedinStatus) => {
         this.isLoggedIn = loggedinStatus;
+        this.userName = this.authService.getUserName();
       }
     );
   }

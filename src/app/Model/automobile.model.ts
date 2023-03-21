@@ -17,6 +17,7 @@ export interface IAutoMobile {
   location: [string, string];
   offers: IOffer[];
   createdAt: string;
+  status: string;
 }
 
 export interface IPurchased {

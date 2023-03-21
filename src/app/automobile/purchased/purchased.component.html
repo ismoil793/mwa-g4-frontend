@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-      <div class="row py-4">
+      <div class="row">
         <div class="mx-auto">
-          <h1 class="fw-light">Purchased information</h1>
+          <h5 class="d-block card-title pb-2">Purchased Details</h5>
         </div>
       </div>
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -22,7 +22,20 @@
           >
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.title }}</td>
-            <td>{{ item.offers[0].status }}</td>
+            <td>
+              <span
+                *ngIf="item.offers[0].status == 'Rejected'"
+                class="badge badge-pill badge-primary"
+                style="background-color: red"
+                >{{ item.offers[0].status }}</span
+              >
+              <span
+                *ngIf="item.offers[0].status == 'Approved'"
+                class="badge badge-pill badge-primary"
+                style="background-color: green"
+                >{{ item.offers[0].status }}</span
+              >
+            </td>
             <td>{{ item.offers[0].comment }}</td>
           </tr>
         </tbody>

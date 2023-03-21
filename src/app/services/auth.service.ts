@@ -68,6 +68,18 @@ export class AuthService {
     }
     return null;
   }
+  getUserName() {
+    const appState = this.getAppState() || '';
+    if (appState.length > 0) {
+      const user = JSON.parse(appState);
+      if (user) {
+        return user.fullname;
+      } else {
+        return null;
+      }
+    }
+    return '';
+  }
 
   getAppState() {
     console.log('get APPSTATE');
@@ -76,15 +88,15 @@ export class AuthService {
 
   getUserId() {
     const appState = this.getAppState() || '';
-    if(appState) {
+    if (appState) {
       const user = JSON.parse(appState);
-      return user._id
+      return user._id;
     }
-    return ''
+    return '';
   }
 
   saveLoggedinState(user: IUser) {
-    console.log('save APPSTATE');
+    console.log('save APPSTATE', user);
     localStorage.setItem('APPSTATE', JSON.stringify(user));
     this.loggedInState$.next(true);
   }
