@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { ILoginRes } from '../Model/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent {
   isSignupError = false;
   signupErrorMessage = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
       fullname: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -43,8 +44,9 @@ export class SignupComponent {
             this.userService.saveLoggedinState(res.data);
             this.isSignupError = false;
             this.erroMsg = '';
+            this.toastr.success('Welcome ' + this.userService.getUserName());
             //redirect to home
-            this.router.navigate(['']);
+            this.router.navigate(['','']);
           } else {
             this.signupErrorMessage = res.data.msg || '';
             this.isSignupError = true;
