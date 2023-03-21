@@ -1,18 +1,20 @@
 export interface IUser {
-  _id: string,
-  email: string,
-  fullname: string,
-  jwt?: string
+  _id: string;
+  email: string;
+  fullname: string;
+  jwt?: string;
+  location?: {
+    coordinates: number[];
+  };
 }
 
 export interface ILoginRes {
   success: boolean;
-  data:
-  {
+  data: {
     _id: string;
-      fullname: string;
-      email: string;
+    fullname: string;
+    email: string;
     jwt: string;
-      msg?: string
-    };
+    msg?: string;
+  };
 }

@@ -30,6 +30,7 @@ function initializeAppFactory(authService: AuthService) {
       email: dataJson.email,
       fullname: dataJson.fullname,
       jwt: dataJson.jwt,
+      location: dataJson.location,
     });
   }
   return () => {};
